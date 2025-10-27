@@ -64,7 +64,7 @@ resource "google_compute_subnetwork" "cluster-subnet" {
     range_name    = "pod-ranges"
     # BEST PRACTICE: /20 gives more pod IPs (4,094) than /24.
     # Autopilot can use many IPs, so don't be too restrictive.
-    ip_cidr_range = "192.168.1.0/20"
+    ip_cidr_range = "192.168.1.0/24"
   }
 }
 
