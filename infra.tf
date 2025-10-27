@@ -97,6 +97,16 @@ resource "google_container_cluster" "default" {
     master_ipv4_cidr_block = "172.16.0.0/28"
   }
 
+  # --- CRITICAL FIX: ADD THIS BLOCK ---
+  # This is required by Google Cloud when enable_private_endpoint is true.
+  # We are authorizing the cluster's own subnet to access the private endpoint.
+  master_authorized_networks_config {
+    cidr_blocks {
+      display_name = "cluster-subnet"
+      cidr_block   = google_compute_subnetwork.cluster-subnet.ip_cidr_range
+    }
+  }
+
   workload_identity_config {
     workload_pool = "${data.google_project.project.project_id}.svc.id.goog"
   }
