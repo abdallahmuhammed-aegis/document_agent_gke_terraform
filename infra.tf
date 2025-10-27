@@ -72,7 +72,7 @@ resource "google_compute_subnetwork" "cluster-subnet" {
 # GKE CLUSTER: Hardened Private Autopilot Cluster
 # -------------------------------------------------------------------
 resource "google_container_cluster" "default" {
-  name     = "v0.1-cluster"
+  name     = "v0-1-cluster"
   location = "europe-west4"
 
   # --- Autopilot enforces many best practices by default ---
