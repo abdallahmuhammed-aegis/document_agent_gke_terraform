@@ -72,7 +72,7 @@ resource "google_compute_subnetwork" "cluster-subnet" {
 # GKE CLUSTER: Hardened Private Autopilot Cluster
 # -------------------------------------------------------------------
 resource "google_container_cluster" "default" {
-  name     = "V0.1-cluster"
+  name     = "v0.1-cluster"
   location = "europe-west4"
 
   # --- Autopilot enforces many best practices by default ---
@@ -109,8 +109,8 @@ resource "google_container_cluster" "default" {
   }
 
   # BEST PRACTICE: Use GKE-specific logging & monitoring
-  logging_service    = "logging.googleapis.com/gke"
-  monitoring_service = "monitoring.googleapis.com/gke"
+  logging_service    = "logging.googleapis.com/kubernetes"
+  monitoring_service = "monitoring.googleapis.com/kubernetes"
 
   enable_l4_ilb_subsetting = true
 
